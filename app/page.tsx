@@ -23,7 +23,7 @@ const Home: FC = () => {
     
     let numVal = Number.parseFloat(value);
     
-    if (Number.isNaN(numVal)) {
+    if(Number.isNaN(numVal)) {
       numVal = 0;
     }
     
@@ -49,21 +49,21 @@ const Home: FC = () => {
         </button>
         <label className="container__label">
           <input
-            className="container__input" 
-            type="number" 
-            placeholder="Max Price" 
-            onChange={handleChange} 
+            className="container__input"
+            type="number"
+            placeholder="Max Price"
+            onChange={handleChange}
           />
-          <input 
+          {/* <input 
             className="container__input" 
             type="number" 
             placeholder="Raiting" 
             onChange={handleChange}
-          />
+          /> */}
         </label>
       </form>
       <div className='container'>
-        {products.map((product) => (
+        {filteredProducts.map((product) => (
           <ProductCard key={product.id} {...product} />
         ))}
       </div>
