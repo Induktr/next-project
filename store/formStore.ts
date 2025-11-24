@@ -4,15 +4,12 @@ import { immer } from 'zustand/middleware/immer';
 import { Form } from '../lib/types';
 import { useProductStore } from './productStore';
 
-export const useFormStore = create(immer(persist(combine({
+export const useFormStore = create(immer(combine({
   form: {} as Form,
   setForm: (form: Form) => {},
 }, (set) => ({
   form: {} as Form,
-  setForm: (form: Form) => set((state) => {
-    state.form = form;
-    useProductStore.getState().filterProducts(useProductStore.getState().products, form.maxPrice, form.raiting);
-  })
-})), 
-  { name: 'formStore' }
-)));
+  setForm: (form: Form) => set(({
+    form: form,
+  }))
+}))));

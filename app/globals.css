@@ -215,6 +215,9 @@ body.light-theme {
 }
 
 .container__input {
+    -webkit-appearance: none;
+    appearance: none;
+    -moz-appearance: none;
     width: 100%;
     height: 40px;
     border-radius: var(--border-radius-default);

@@ -7,14 +7,13 @@ export const useProductStore = create(combine(
   {
     products: [] as Product[],
     filteredProducts: [] as Product[],
-    filterProducts: (products: Product[], maxPrice: number, raiting: number) => {},
+    setFilteredProducts: (products: Product[], maxPrice: number, raiting: number) => {},
   },
-  immer(persist((set) => ({
+  immer((set) => ({
     products: [],
     filteredProducts: [],
-    filterProducts: (products: Product[], maxPrice: number, raiting: number) => set((state) => {
-      state.filteredProducts = products.filter((product) => product.price <= maxPrice && product.raiting >= raiting);
+    setFilteredProducts: (products: Product[], maxPrice: number, raiting: number) => set((state) => {
+      state.filteredProducts = products.filter((product) => product.price <= maxPrice || product.raiting <= raiting);
     }),
-  }), 
-  { name: 'productStore' })),
-));
+  }),
+)));
